@@ -1,10 +1,8 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch, Redirect, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Authentication from '../authenication/authentication';
 import Addcricketer from '../cricketers/addcricketer'
-import { useSelector } from 'react-redux';
-const Routes = () => {
-    let login = useSelector((state) => state.user.login)
+const Routes: React.FC = () => {
     return (
         <Router>
             <Switch>
