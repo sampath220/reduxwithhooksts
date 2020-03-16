@@ -23,16 +23,18 @@ export default function Addcricketer() {
     const capitalizeFirstLetter = (string: String) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
-    const handleUpload = (e: any) => {
+    const handleUpload = async (e: any) => {
+
         const data = new FormData();
         data.append('myfile', uploadInput.files[0]);
-        Axios.post("http://localhost:2000/addPhoto", data).then(res => setcricketer({ ...cricketer, image: res.data }))
+        await Axios.post("http://localhost:2000/addPhoto", data).then(res => setcricketer({ ...cricketer, image: res.data }))
+
     }
     const handleSubmit = (e: any) => {
         e.preventDefault();
-        uploadInput="";
         dispatch(addcricketer({ name: capitalizeFirstLetter(cricketer.name), country: capitalizeFirstLetter(cricketer.country), image: cricketer.image }, user.logindata))
         setcricketer({ name: '', country: '', image: '' })
+        uploadInput.value = ""
     }
     return (
         <div >

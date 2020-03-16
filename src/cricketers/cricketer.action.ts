@@ -14,7 +14,7 @@ export const addcricketer = (cricketer: Cricketer, user: any) => {
                 var existingCricketerResponse = await axios.put('http://localhost:3000/cricketers/' + existingcricketer.id + '/', {
                     name: existingcricketer.name,
                     country: existingcricketer.country,
-                    image:existingcricketer.image,
+                    image: existingcricketer.image,
                     users: [...existingcricketer.users, user.id]
                 })
                 const indx = existinglist.indexOf(existingcricketer)
@@ -66,7 +66,8 @@ export function deleteCricketer(cricketer: Cricketer, user: any) {
             var res = await axios.put('http://localhost:3000/cricketers/' + cricketer.id + '/', {
                 name: cricketer.name,
                 country: cricketer.country,
-                users: [...updatedUsers]
+                users: [...updatedUsers],
+                image: cricketer.image
             })
             const indx = existinglist.indexOf(cricketer)
             existinglist[indx] = res.data;
